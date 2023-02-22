@@ -2,6 +2,19 @@
 #include <limits>
 #include <iostream>
 
+ScalarConverter::ScalarConverter() {}
+
+ScalarConverter::~ScalarConverter() {}
+
+ScalarConverter::ScalarConverter(const ScalarConverter& other) {
+	*this = other;
+}
+
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other) {
+	(void)other;
+	return *this;
+}
+
 ScalarConverter::ConvertResult ScalarConverter::convert(const std::string& literal) {
 	ConvertResult result;
 	result.c = 0;
@@ -12,8 +25,8 @@ ScalarConverter::ConvertResult ScalarConverter::convert(const std::string& liter
 	result.iError = "";
 	result.fError = "";
 	result.dError = "";
-	
-	
+
+
 	try
     {
         result.d = std::stod(literal);
